@@ -15,7 +15,21 @@
 <body>
 <header class="container py-3">
     <h1>Mis contactos</h1>
-    <div class="text-end">
+    <div class="row justify-content-center mt-5 mb-4" style="row-gap: 1rem;">
+        <form action="" class="col col-lg-2 mr-3 w-50">
+            <div class="input-group">
+                <button class="btn btn-primary" type="submit" id="button-addon1">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input type="text" class="form-control" placeholder="Buscar contacto por nombre" name="nombre" onblur="capitalizar(this)">
+            </div>
+        </form>
+        <a class="btn btn-light col-md-auto" href="/">
+            <i class="fa-solid fa-list-ul"></i>
+            Listar todo
+        </a>
+    </div>
+    <div class="">
         <a href="/nuevo" class="btn btn-primary">
             <i class="m-1 fa-solid fa-user-plus"></i>
             Nuevo contacto
@@ -65,11 +79,11 @@
         </table>
     </section>
     <section>
-        <div class="row pt-3">
-            <div class="col-sm-6">
+        <div class="row justify-content-center pt-3">
+<!--            <div class="col-sm-6">-->
 <!--                <div sd:pagination-summary="">info</div>-->
-            </div>
-            <div class="col-sm-6">
+<!--            </div>-->
+            <div class="row justify-content-center col-auto">
                 <nav class="pull-right">
                     <ul class="pagination" sd:pagination-split="7" sd:pagination="full"></ul>
                 </nav>
@@ -86,6 +100,10 @@
         if(ok){
             element.nextElementSibling.submit()
         }
+    }
+
+    function capitalizar(element){
+        element.value = element.value.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));;
     }
 </script>
 </body>

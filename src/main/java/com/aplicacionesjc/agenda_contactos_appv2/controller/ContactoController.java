@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
@@ -25,8 +26,13 @@ public class ContactoController {
     private ContactoRepository contactoRepository;
 
     @GetMapping({"/", ""})
-    public String mostrarPaginaDeInicio(@PageableDefault(size = 5, sort = "fechaRegistro", direction = Sort.Direction.ASC) Pageable pageable, Model model){
-        Page<Contacto> contactoPage = contactoRepository.findAll(pageable);
+    public String mostrarPaginaDeInicio(@PageableDefault(size = 5, sort = "fechaRegistro", direction = Sort.Direction.ASC) Pageable pageable, @RequestParam(required = false) String nombre, Model model){
+        Page<Contacto> contactoPage;
+        if(nombre != null && nombre.trim().length() > 0){
+            contactoPage = contactoRepository.findByNombreContaining(nombre, pageable);
+        } else {
+            contactoPage = contactoRepository.findAll(pageable);
+        }
         model.addAttribute("contactoPage", contactoPage);
         return "index";
     }
