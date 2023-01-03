@@ -3,6 +3,10 @@ package com.aplicacionesjc.agenda_contactos_appv2.controller;
 import com.aplicacionesjc.agenda_contactos_appv2.model.Contacto;
 import com.aplicacionesjc.agenda_contactos_appv2.repository.ContactoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +25,9 @@ public class ContactoController {
     private ContactoRepository contactoRepository;
 
     @GetMapping({"/", ""})
-    public String mostrarPaginaDeInicio(Model model){
-        List<Contacto> contactoList = contactoRepository.findAll();
-        model.addAttribute("contactoList", contactoList);
+    public String mostrarPaginaDeInicio(@PageableDefault(size = 5, sort = "fechaRegistro", direction = Sort.Direction.ASC) Pageable pageable, Model model){
+        Page<Contacto> contactoPage = contactoRepository.findAll(pageable);
+        model.addAttribute("contactoPage", contactoPage);
         return "index";
     }
 

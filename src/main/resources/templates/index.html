@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="contacto : ${contactoList}" th:object="${contacto}">
+            <tr th:each="contacto : ${contactoPage}" th:object="${contacto}">
                 <td th:text="*{id}"></td>
                 <td th:text="*{nombre}"></td>
                 <td th:text="*{celular}"></td>
@@ -63,6 +63,18 @@
             </tr>
             </tbody>
         </table>
+    </section>
+    <section>
+        <div class="row pt-3">
+            <div class="col-sm-6">
+<!--                <div sd:pagination-summary="">info</div>-->
+            </div>
+            <div class="col-sm-6">
+                <nav class="pull-right">
+                    <ul class="pagination" sd:pagination-split="7" sd:pagination="full"></ul>
+                </nav>
+            </div>
+        </div>
     </section>
 </main>
 <!-- JavaScript Bundle with Popper -->
