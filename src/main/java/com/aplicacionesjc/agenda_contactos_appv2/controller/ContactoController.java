@@ -68,4 +68,12 @@ public class ContactoController {
         ra.addFlashAttribute("msgSuccess", "El contacto ha sido actualizado con éxito.");
         return "redirect:/";
     }
+
+    @PostMapping("/{id}/eliminar")
+    public String eliminarContacto(@PathVariable Integer id,RedirectAttributes ra){
+        Contacto contactoAEliminar = contactoRepository.getById(id);
+        contactoRepository.delete(contactoAEliminar);
+        ra.addFlashAttribute("msgSuccess", "El contacto ha sido eliminado con éxito.");
+        return "redirect:/";
+    }
 }
