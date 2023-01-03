@@ -14,7 +14,7 @@
 </head>
 <body>
 <header class="container pt-3">
-    <h1 class="text-center">[[${contacto.id ne null ? 'Editar contacto' : 'Nuevo contacto'}]] </h1>
+    <h1 class="text-center">[[${contacto.id ne null ? 'Editar' : 'Nuevo'}]] contacto</h1>
 </header>
 <main>
     <section class="row justify-content-center py-3">
@@ -47,7 +47,7 @@
                 <div class="text-end">
                     <button class="btn btn-success px-3" type="submit">
                         <i class="fa-sharp fa-solid fa-floppy-disk me-1"></i>
-                        Guardar
+                        [[${contacto.id ne null ? 'Actualizar' : 'Guardar'}]]
                     </button>
                     <a class="btn btn-light" href="/">
                         <i class="fa-solid fa-backward me-1"></i>

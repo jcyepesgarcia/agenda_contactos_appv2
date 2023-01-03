@@ -22,7 +22,7 @@ public class Contacto {
     private String nombre;
 
     @NotBlank(message = "Ingrese el número del contacto")
-    @Size(max = 13)
+    @Size(max = 13, message = "El número debe contener 13 caracteres como máximo")
     private String celular;
 
     @Email(message = "Debe ingresar una dirección de correo electrónico con formato correcto")

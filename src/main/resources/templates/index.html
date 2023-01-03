@@ -50,13 +50,13 @@
                 <td th:text="*{#temporals.format(fechaNacimiento, 'dd/MM/YYYY')}"></td>
                 <td th:text="*{#temporals.format(fechaRegistro, 'dd/MM/YYYY hh:mm a')}"></td>
                 <td>
-                    <a href="#" class="text-dark mx-2 text-decoration-none">
-                        <i class="fa-solid fa-pen-to-square text-warning" title="Editar"></i>
+                    <a th:href="@{/{id}/editar(id=*{id})}" class="btn btn-warning text-dark mx-2 text-decoration-none">
+                        <i class="fa-solid fa-pen-to-square" title="Editar"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="text-dark text-decoration-none">
-                        <i class="fa-solid fa-trash text-danger" title="Eliminar"></i>
+                    <a href="#" class="btn btn-danger text-white text-decoration-none">
+                        <i class="fa-solid fa-trash" title="Eliminar"></i>
                     </a>
                 </td>
             </tr>
